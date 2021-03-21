@@ -92,9 +92,8 @@ ignore:
 # Extensions
 theme: matery
 
-# Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
 # 部署配置
 deploy:
   type: git
+  repo: https://github.com/mayueyue213/myy.github.io
   branch: master
