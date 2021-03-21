@@ -8,6 +8,7 @@ language: zh-CN
 timezone: 'Asia/Shanghai'
 
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+root: /blog/
 url: http://blog.mayueyue.com
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -91,6 +92,11 @@ ignore:
 
 # Extensions
 theme: matery
+
+
+search:
+  path: search.xml
+  field: get
 
 # 部署配置
 deploy:
