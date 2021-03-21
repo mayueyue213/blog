@@ -18,7 +18,7 @@ pretty_urls:
 
 # Directory
 source_dir: source
-public_dir: public
+public_dir: docs
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
@@ -97,9 +97,3 @@ theme: matery
 search:
   path: search.xml
   field: get
-
-# 部署配置
-deploy:
-  type: git
-  repo: https://github.com/mayueyue213/myy.github.io
-  branch: master
