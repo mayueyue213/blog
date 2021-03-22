@@ -19,7 +19,7 @@
                     <div class="col s12 m12 l4">
                         <div class="profile center-align">
                             <div class="avatar">
-                                <img src="<%- theme.jsDelivr.url %><%- url_for(theme.profile.avatar) %>" alt="<%- config.author %>"
+                                <img src="<%- url_for(config.profile.avatar) %>" alt="<%- config.author %>"
                                      class="circle responsive-img avatar-img">
                             </div>
                             <div class="author">
@@ -27,7 +27,7 @@
                                     <%- partial('_partial/post-statis') %>
                                 </div>
                                 <div class="title"><%- config.author %></div>
-                                <div class="career"><%- theme.profile.career %></div>
+                                <div class="career"><%- config.profile.career %></div>
                                 <div class="social-link hide-on-large-only" data-aos="zoom-in-left">
                                     <%- partial('_partial/social-link') %>
                                 </div>
@@ -41,11 +41,11 @@
                     </div>
                 </div>
 
-                <div class="introduction center-align" data-aos="fade-up"><%= theme.profile.introduction %></div>
+                <div class="introduction center-align" data-aos="fade-up"><%= config.profile.introduction %></div>
 
                 <%- partial('_widget/post-charts') %>
 
-                <% if (theme.myProjects && theme.myProjects.enable) { %>
+                <% if (config.myProjects && config.myProjects.enable) { %>
                 <%- partial('_widget/my-projects') %>
                 <% } %>
 
@@ -53,7 +53,7 @@
                 <%- partial('_widget/my-skills') %>
                 <% } %>
 
-                <% if (theme.myGallery && theme.myGallery.enable) { %>
+                <% if (config.myGallery && config.myGallery.enable) { %>
                 <%- partial('_widget/my-gallery') %>
                 <% } %>
 

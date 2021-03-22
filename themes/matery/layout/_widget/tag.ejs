@@ -1,0 +1,16 @@
+<% if (site.posts.length){ %>
+  <div class="card siderbar-widget reset">
+    <h6 class="widget-title">
+      <span>文章标签</span>
+    </h6>
+    <div class="widget-body tag-widget-body">
+      <%- list_tags({
+        orderby: 'length',
+        order: -1,
+        amount: 0,
+        show_count: false,
+        class: 'tag'
+      }) %>
+    </div>
+  </div>
+<% } %>

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.tocbot) %>">
+<link rel="stylesheet" href="<%- url_for(theme.libs.css.tocbot) %>">
 <style>
     #articleContent h1::before,
     #articleContent h2::before,
@@ -103,7 +103,7 @@
 </div>
 
 <!-- TOC 悬浮按钮. -->
-<% if (theme.toc.enable && theme.toc.showToggleBtn) { %>
+<% if (config.toc.enable && config.toc.showToggleBtn) { %>
 <div id="floating-toc-btn" class="hide-on-med-and-down">
     <a class="btn-floating btn-large bg-color">
         <i class="fas fa-list-ul"></i>
@@ -111,15 +111,15 @@
 </div>
 <% } %>
 
-<script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.tocbot) %>"></script>
+<script src="<%- url_for(theme.libs.js.tocbot) %>"></script>
 <script>
     $(function () {
         tocbot.init({
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('<%- theme.toc.collapseDepth %>'),
-            headingSelector: '<%- theme.toc.heading %>'
+            collapseDepth: Number('<%- config.toc.collapseDepth %>'),
+            headingSelector: '<%- config.toc.heading %>'
         });
 
         // modify the toc link href to support Chinese.
@@ -131,7 +131,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('<%- theme.toc.heading %>').each(function () {
+        $('#articleContent').children('<%- config.toc.heading %>').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
@@ -148,7 +148,7 @@
             }
         });
 
-        <% if (theme.toc.enable && theme.toc.showToggleBtn) { %>
+        <% if (config.toc.enable && config.toc.showToggleBtn) { %>
         /* 修复文章卡片 div 的宽度. */
         let fixPostCardWidth = function (srcId, targetId) {
             let srcDiv = $('#' + srcId);

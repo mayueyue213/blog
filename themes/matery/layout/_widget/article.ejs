@@ -1,0 +1,11 @@
+<article class="article-entry card pt-4 mb-5 p-3 p-md-5 p-sm-4">
+    <%- partial('_widget/article-meta.ejs', { post: post }) %>
+    <div class="entry-body article-content">
+        <%- post.content %>
+    </div>
+    <div class="entry-footer glass_water w-100">
+        <%- partial('_widget/read-more', {
+            href: url_for(post.path)
+        }) %>
+    </div>
+</article>

@@ -1,0 +1,24 @@
+<header class="article-meta">
+    <a href="<%= url_for(post.path) %>" class="text-dark text-decoration-none">
+        <h2>
+            <%= post.title %>
+        </h2>
+    </a>
+
+    <div class="meta">
+        <span>
+            <i class="fa fa-calendar-check active"></i>
+            <%= date(post.date, 'YYYY年M月D日') %>
+        </span>
+        &nbsp;
+        <span>
+            <i class="fa fa-user active"></i>
+            <%= post.author %>
+        </span>
+        &nbsp;
+        <span>
+            <i class="far fa-eye active"></i>
+            <span id="busuanzi_value_page_pv"></span>阅读人次
+        </span>
+    </div>
+</header>

@@ -5,8 +5,8 @@ configRoot = (configRoot === null || configRoot === undefined || configRoot === 
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
-        <% if (theme.logo !== undefined && theme.logo.length > 0) { %>
-        <img src="<%- theme.jsDelivr.url %><%- url_for(theme.logo) %>" class="logo-img circle responsive-img">
+        <% if (config.logo !== undefined && config.logo.length > 0) { %>
+        <img src="<%- url_for(config.logo) %>" class="logo-img circle responsive-img">
         <% } %>
         <div class="logo-name"><%= config.title %></div>
         <div class="logo-desc">
@@ -30,12 +30,12 @@ configRoot = (configRoot === null || configRoot === undefined || configRoot === 
     %>
 
     <ul class="menu-list mobile-menu-list">
-        <% Object.keys(theme.menu).forEach(function(key) { %>
+        <% Object.keys(config.menu).forEach(function(key) { %>
         <li class="m-nav-item">
-	  <% if(!theme.menu[key].children) { %>
-		<a href="<%- url_for(theme.menu[key].url) %>" class="waves-effect waves-light">
-			<% if (theme.menu[key].icon && theme.menu[key].icon.length > 0) { %>
-			    <i class="fa-fw <%- theme.menu[key].icon %>"></i>
+	  <% if(!config.menu[key].children) { %>
+		<a href="<%- url_for(config.menu[key].url) %>" class="waves-effect waves-light">
+			<% if (config.menu[key].icon && config.menu[key].icon.length > 0) { %>
+			    <i class="fa-fw <%- config.menu[key].icon %>"></i>
 			<% } else { %>
 				<i class="fas fa-fw fa-link"></i>
 			<% } %>
@@ -43,8 +43,8 @@ configRoot = (configRoot === null || configRoot === undefined || configRoot === 
 		</a>
           <% } else { %>
 		<a href="javascript:;">
-			<% if (theme.menu[key].icon && theme.menu[key].icon.length > 0) { %>
-				<i class="fa-fw <%- theme.menu[key].icon %>"></i>
+			<% if (config.menu[key].icon && config.menu[key].icon.length > 0) { %>
+				<i class="fa-fw <%- config.menu[key].icon %>"></i>
 			<% } else { %>
 				<i class="fas fa-fw fa-link"></i>
 			<% } %>
@@ -52,7 +52,7 @@ configRoot = (configRoot === null || configRoot === undefined || configRoot === 
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul <%if(theme.navMenu&&theme.navMenu.bgColor){%> style="background: <%-theme.navMenu.bgColor%>;"<%}%> >
-              <% for(let childrenLink of theme.menu[key].children){ %>
+              <% for(let childrenLink of config.menu[key].children){ %>
                 <li>
 
                   <a href="<%- url_for(childrenLink.url)%> " style="margin-left:<% if (theme.navMenu && theme.navMenu.mleft) {%>50px<%}else{%>75px<%}%>">
@@ -67,13 +67,5 @@ configRoot = (configRoot === null || configRoot === undefined || configRoot === 
           <% } %>
         </li>
         <% }); %>
-        <% if (theme.githubLink && theme.githubLink.enable) { %>
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="<%- theme.githubLink.url %>" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i><%- theme.githubLink.title %>
-            </a>
-        </li>
-        <% } %>
     </ul>
 </div>

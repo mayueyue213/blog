@@ -3,8 +3,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="<%- url_for() %>" class="waves-effect waves-light">
-                    <% if (theme.logo !== undefined && theme.logo.length > 0) { %>
-                    <img src="<%- theme.jsDelivr.url %><%- url_for(theme.logo) %>" class="logo-img" alt="LOGO">
+                    <% if (config.logo !== undefined && config.logo.length > 0) { %>
+                    <img src="<%- config.jsDelivr.url %><%- url_for(config.logo) %>" class="logo-img" alt="LOGO">
                     <% } %>
                     <% if (config.navTitle !== undefined) { %>
                         <span class="logo-span"><%= config.navTitle %></span>
@@ -13,10 +13,5 @@
             </div>
             <%- partial('_partial/navigation') %>
         </div>
-
-        <% if (theme.githubLink && theme.githubLink.enable) { %>
-            <%- partial('_partial/github-link') %>
-        <% } %>
     </nav>
-
 </header>

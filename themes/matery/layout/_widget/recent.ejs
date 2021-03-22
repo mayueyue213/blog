@@ -1,0 +1,38 @@
+<%
+var topPosts = [];
+site.posts.slice(0, 7).forEach(function (post) {
+    topPosts.push(post);
+});
+var topPostsCount = topPosts.length;
+%>
+
+<% if (topPostsCount > 0) { %>
+    <div class="recent-post-card">
+        <%
+            var post = topPosts[0];
+        %>
+        <!-- 第一个展示预览 -->
+        <%- partial('_partial/post-overview.ejs', { page: post }) %>
+
+        <!-- 展示最近几个链接 -->
+        <% for (var i = 1; i < topPostsCount; i++) { %>
+            <%
+                post = topPosts[i];
+            %>
+            <li class="item">
+                <!-- <i class="far fa-calendar-minus fa-fw"></i>:&nbsp;&nbsp; -->
+                <span class="date">
+                    <%- date(post.date, 'YYYY年M月D日') %>
+                </span>
+                <i class="fa fa-angle-double-right"></i>
+                <a class="link" href="<%= url_for(post.path) %>"><%- post.title %></a>                    
+            </li>
+        <% } %>
+
+        <!-- 更多文章 -->
+        <li class="item">
+            <!-- <i class="far fa-calendar-minus fa-fw"></i>:&nbsp;&nbsp; -->
+            <a class="link more" href="<%= url_for('/archives') %>">更多文章......</a>                    
+        </li>
+    </div>
+<% } %>

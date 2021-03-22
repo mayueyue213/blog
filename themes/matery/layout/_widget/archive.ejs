@@ -1,0 +1,16 @@
+<% if (site.posts.length){ %>
+  <div class="card siderbar-widget reset">
+    <h6 class="widget-title">
+      <span>文章归档</span>
+    </h6>
+    <div class="widget-body">
+      <%- list_archives({
+        type: 'monthly',
+        order: -1,
+        format: 'YYYY年M月',
+        separator: '_',
+        class: 'list-unstyled widget'
+      }) %>
+    </div>
+  </div>
+<% } %>

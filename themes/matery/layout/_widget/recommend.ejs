@@ -1,7 +1,7 @@
 <%
     // get all top posts.
     var topPosts = [];
-    if (theme.recommend.useConfig) {
+    if (config.recommend.useConfig) {
         topPosts = site.data.recommends;
     } else {
         site.posts.forEach(function (post) {
@@ -41,7 +41,7 @@
     var colorCount = bgColorArr.length;
 %>
 
-<% if (theme.recommend.showTitle) { %>
+<% if (config.recommend.showTitle) { %>
 <div class="title"><i class="far fa-thumbs-up"></i>&nbsp;&nbsp;<%- __('recommendedPosts') %></div>
 <% } %>
 <div class="row">
@@ -56,11 +56,11 @@
         <% if (post.img) {%>
              <div class="post-card" style="background-image: url('<%- featureImg %>')">
         <%}else{%>
-            <div class="post-card" style="background-image: url('<%- theme.jsDelivr.url %><%- featureImg %>')">
+            <div class="post-card" style="background-image: url('<%- featureImg %>')">
             <% } %>
             <div class="post-body">
                 <div class="post-categories">
-                    <% if (theme.recommend.useConfig) { %>
+                    <% if (config.recommend.useConfig) { %>
                         <a href="<%- url_for(post.categoryPath) %>" class="category"><%= post.categoryName %></a>
                     <% } else { %>
                         <% post.categories.forEach(category => { %>
@@ -103,11 +103,11 @@
         <% if (post.img) {%>
              <div class="post-card" style="background-image: url('<%- featureImg %>')">
         <%}else{%>
-            <div class="post-card" style="background-image: url('<%- theme.jsDelivr.url %><%- featureImg %>')">
+            <div class="post-card" style="background-image: url('<%- featureImg %>')">
             <% } %>
             <div class="post-body">
                 <div class="post-categories">
-                    <% if (theme.recommend.useConfig) { %>
+                    <% if (config.recommend.useConfig) { %>
                         <a href="<%- url_for(post.categoryPath) %>" class="category"><%= post.categoryName %></a>
                     <% } else { %>
                         <% post.categories.forEach(category => { %>

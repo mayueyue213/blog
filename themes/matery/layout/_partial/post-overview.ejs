@@ -1,0 +1,24 @@
+<!-- 文章内容详情 -->
+<div class="card overview reset">
+    <div class="card-content article-info">
+        <div class="post-info">
+            <div class="post-date info-break-policy">
+                <%- page.title %>
+            </div>
+            <% if (config.postInfo.date) { %>
+            <div class="post-date info-break-policy float-right">
+                <i class="far fa-calendar-minus fa-fw"></i><%- __('publishDate') %>:&nbsp;&nbsp;
+                <%- date(page.date, 'YYYY-MM-DD') %>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <hr class="clearfix">
+
+    <div class="card-content article-card-content">
+        <%- page.content %>
+    </div>
+    <%- partial('_widget/read-more', {
+        href: url_for(page.path)
+    }) %>
+</div>

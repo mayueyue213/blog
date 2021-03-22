@@ -1,46 +1,46 @@
-<% if (theme.socialLink.github) { %>
-    <a href="<%= theme.socialLink.github %>" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+<% if (config.socialLink.github) { %>
+    <a href="<%= config.socialLink.github %>" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 <% } %>
 
-<% if (theme.socialLink.email) { %>
-    <a href="mailto:<%= theme.socialLink.email %>" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+<% if (config.socialLink.email) { %>
+    <a href="mailto:<%= config.socialLink.email %>" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 <% } %>
 
-<% if (theme.socialLink.facebook) { %>
-    <a href="<%= theme.socialLink.facebook %>" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: <%= theme.socialLink.facebook %>" data-position="top" data-delay="50">
+<% if (config.socialLink.facebook) { %>
+    <a href="<%= config.socialLink.facebook %>" class="tooltipped" target="_blank" data-tooltip="关注我的Facebook: <%= config.socialLink.facebook %>" data-position="top" data-delay="50">
         <i class="fab fa-facebook-f"></i>
     </a>
 <% } %>
 
-<% if (theme.socialLink.twitter) { %>
-    <a href="<%= theme.socialLink.twitter %>" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: <%= theme.socialLink.twitter %>" data-position="top" data-delay="50">
+<% if (config.socialLink.twitter) { %>
+    <a href="<%= config.socialLink.twitter %>" class="tooltipped" target="_blank" data-tooltip="关注我的Twitter: <%= config.socialLink.twitter %>" data-position="top" data-delay="50">
         <i class="fab fa-twitter"></i>
     </a>
 <% } %>
 
-<% if (theme.socialLink.qq) { %>
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=<%= theme.socialLink.qq %>" class="tooltipped" target="_blank" data-tooltip="QQ联系我: <%= theme.socialLink.qq %>" data-position="top" data-delay="50">
+<% if (config.socialLink.qq) { %>
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=<%= config.socialLink.qq %>" class="tooltipped" target="_blank" data-tooltip="QQ联系我: <%= config.socialLink.qq %>" data-position="top" data-delay="50">
         <i class="fab fa-qq"></i>
     </a>
 <% } %>
 
-<% if (theme.socialLink.weibo) { %>
-    <a href="<%= theme.socialLink.weibo %>" class="tooltipped" target="_blank" data-tooltip="关注我的微博: <%= theme.socialLink.weibo %>" data-position="top" data-delay="50">
+<% if (config.socialLink.weibo) { %>
+    <a href="<%= config.socialLink.weibo %>" class="tooltipped" target="_blank" data-tooltip="关注我的微博: <%= config.socialLink.weibo %>" data-position="top" data-delay="50">
         <i class="fab fa-weibo"></i>
     </a>
 <% } %>
 
-<% if (theme.socialLink.zhihu) { %>
-    <a href="<%= theme.socialLink.zhihu %>" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: <%= theme.socialLink.zhihu %>" data-position="top" data-delay="50">
+<% if (config.socialLink.zhihu) { %>
+    <a href="<%= config.socialLink.zhihu %>" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: <%= config.socialLink.zhihu %>" data-position="top" data-delay="50">
         <i class="fab fa-zhihu1">知</i>
     </a>
 <% } %>
 
-<% if (theme.socialLink.rss) { %>
+<% if (config.socialLink.rss) { %>
     <a href="<%- url_for('/atom.xml') %>" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fas fa-rss"></i>
     </a>

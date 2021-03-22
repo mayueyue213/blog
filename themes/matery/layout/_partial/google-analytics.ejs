@@ -1,6 +1,6 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<% if (theme.googleAnalytics.enable) { %>
-<script async src="https://www.googletagmanager.com/gtag/js?id=<%- theme.googleAnalytics.id %>"></script>
+<% if (config.googleAnalytics.enable) { %>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<%- config.googleAnalytics.id %>"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
@@ -8,6 +8,6 @@
     }
 
     gtag('js', new Date());
-    gtag('config', '<%- theme.googleAnalytics.id %>');
+    gtag('config', '<%- config.googleAnalytics.id %>');
 </script>
 <% } %>
