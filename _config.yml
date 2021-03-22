@@ -3,13 +3,30 @@ title: 马月月
 subtitle: '马月月'
 description: '身体健康，精神富足，热爱生活'
 keywords: '马月月的网络日志，马月月，冯朋，Terry Ma'
-author: 马月月
+author: 月月
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # 配置网站favicon和网站LOGO
 favicon: /favicon.png
 logo: /medias/logo.png
+
+
+#ICP备案信息尾部显示
+icp:
+  enable: false
+  url: # 备案链接
+  text: # 备案信息
+
+# 站点运行开始时间.
+time:
+  enable: false
+  year: 2021 # 年份
+  month: 03 # 月份
+  date: 22 # 日期
+  hour: 00 # 小时
+  minute: 00 # 分钟
+  second: 00 # 秒
 
 github:
   name: Github
@@ -127,16 +144,6 @@ menu:
   Archives:
     url: /archives
     icon: fas fa-archive
-
-# 站点运行开始时间.
-time:
-  enable: false
-  year: 2021 # 年份
-  month: 03 # 月份
-  date: 22 # 日期
-  hour: 00 # 小时
-  minute: 00 # 分钟
-  second: 00 # 秒
 
 # 是否显示推荐文章的标题
 recommend:
