@@ -125,7 +125,7 @@ $(function () {
     });
 
     /*监听滚动条位置*/
-    let $nav = $('#headNav');
+    // let $nav = $('#headNav');
     let $backTop = $('.top-scroll');
     // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置,给导航加上绿色。
     showOrHideNavBg($(window).scrollTop());
@@ -138,10 +138,10 @@ $(function () {
     function showOrHideNavBg(position) {
         let showPosition = 100;
         if (position < showPosition) {
-            $nav.addClass('nav-transparent');
+            // $nav.addClass('nav-transparent');
             $backTop.slideUp(300);
         } else {
-            $nav.removeClass('nav-transparent');
+            // $nav.removeClass('nav-transparent');
             $backTop.slideDown(300);
         }
     }

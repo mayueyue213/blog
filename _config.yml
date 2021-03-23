@@ -128,7 +128,7 @@ theme: matery
 
 search:
   path: search.xml
-  field: get
+  field: all
 
 # 配置菜单导航的名称、路径和图标icon.
 menu:
@@ -297,7 +297,7 @@ sharejs:
 
 # 网页预加载.
 instantpage:
-  enable: true
+  enable: false
 
 # 首页 banner 中的第二个按钮的配置，包括按钮的显示名称、font awesome图标和按钮的超链接.
 indexbtn:
@@ -324,6 +324,7 @@ libs:
     prism: /libs/prism/prism.css
   js:
     matery: /js/matery.js
+    search: /js/search.js
     jquery: /libs/jquery/jquery.min.js
     materialize: /libs/materialize/materialize.min.js # 1.0.0
     masonry: /libs/masonry/masonry.pkgd.min.js # v4.0.0
@@ -417,3 +418,8 @@ addthis:
 navMenu:
   mleft: false # 二级侧栏子菜单是否对齐左边
   bgColor: " " # 二级侧栏子菜单背景颜色,留空即为全局背景色
+
+sidebar:
+  wechat:
+    enable: false
+  border: true

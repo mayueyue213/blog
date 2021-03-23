@@ -20,7 +20,6 @@ var topPostsCount = topPosts.length;
                 post = topPosts[i];
             %>
             <li class="item">
-                <!-- <i class="far fa-calendar-minus fa-fw"></i>:&nbsp;&nbsp; -->
                 <span class="date">
                     <%- date(post.date, 'YYYY年M月D日') %>
                 </span>
@@ -31,7 +30,6 @@ var topPostsCount = topPosts.length;
 
         <!-- 更多文章 -->
         <li class="item">
-            <!-- <i class="far fa-calendar-minus fa-fw"></i>:&nbsp;&nbsp; -->
             <a class="link more" href="<%= url_for('/archives') %>">更多文章......</a>                    
         </li>
     </div>

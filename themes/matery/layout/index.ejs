@@ -1,20 +1,15 @@
 <% if (is_home() && page.current === 1) { %>
 <%- partial('_partial/index-cover') %>
-<% } else { %>
-    <%- partial('_partial/bg-cover') %>
 <% } %>
 
-<main id="blogEntryAnchor" class="content">
-    <div class="row container home-container">
-        <!-- Post Container -->
-        <!-- 最新文章 -->
-        <div class="col s12 m9 recent-list">
-            <%- partial('_widget/recent') %>
-        </div>
+<main id="blogEntryAnchor" class="row main page-home">
+    <!-- Post Container -->
+    <div class="col s12 m9 main-body">
+        <%- partial('_partial/recent') %>
+    </div>
 
-        <!-- Sidebar Container -->
-        <div class="col s12 m3">
-            <%- partial('_partial/siderbar') %>
-        </div>
+    <!-- Sidebar Container -->
+    <div class="col s12 m3 no-padding sidebar-container">
+        <%- partial('_partial/siderbar') %>
     </div>
 </main>
