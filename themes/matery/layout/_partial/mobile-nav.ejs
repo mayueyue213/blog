@@ -51,13 +51,13 @@ configRoot = (configRoot === null || configRoot === undefined || configRoot === 
 			<%- (config.language === 'zh-CN' && menuMap.has(key)) ? menuMap.get(key) : key %>
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-            <ul <%if(theme.navMenu&&theme.navMenu.bgColor){%> style="background: <%-theme.navMenu.bgColor%>;"<%}%> >
+            <ul <%if(config.navMenu&&config.navMenu.bgColor){%> style="background: <%-config.navMenu.bgColor%>;"<%}%> >
               <% for(let childrenLink of config.menu[key].children){ %>
                 <li>
 
-                  <a href="<%- url_for(childrenLink.url)%> " style="margin-left:<% if (theme.navMenu && theme.navMenu.mleft) {%>50px<%}else{%>75px<%}%>">
+                  <a href="<%- url_for(childrenLink.url)%> " style="margin-left:<% if (config.navMenu && config.navMenu.mleft) {%>50px<%}else{%>75px<%}%>">
 				  <% if (childrenLink.icon && childrenLink.icon.length > 0) { %>
-				   <i class="fa <%- childrenLink.icon %>" style="position: absolute;left:<%if(theme.navMenu&&theme.navMenu.mleft){%>28px<%}else{%>50px<%}%>" ></i>
+				   <i class="fa <%- childrenLink.icon %>" style="position: absolute;left:<%if(config.navMenu&&config.navMenu.mleft){%>28px<%}else{%>50px<%}%>" ></i>
 			      <% } %>
 		          <span><%- childrenLink.name %></span>
                   </a>

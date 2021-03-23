@@ -1,33 +1,33 @@
-<link rel="stylesheet" href="<%- url_for(theme.libs.css.dplayer) %>">
+<link rel="stylesheet" href="<%- url_for(config.libs.css.dplayer) %>">
 <div class="video-player">
-    <% if (theme.video.showTitle) { %>
+    <% if (config.video.showTitle) { %>
     <div class="title center-align">
-        <i class="fas fa-video-camera"></i>&nbsp;&nbsp;<%= theme.video.title %>
+        <i class="fas fa-video-camera"></i>&nbsp;&nbsp;<%= config.video.title %>
     </div>
     <% } %>
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s12">
             <div id="dplayer" class="dplayer-video"
-                    <% if (theme.video.height) { %> style="height: <%- theme.video.height %>px;"<% } %>></div>
+                    <% if (config.video.height) { %> style="height: <%- config.video.height %>px;"<% } %>></div>
         </div>
     </div>
 </div>
 
-<script src="<%- url_for(theme.libs.js.dplayer) %>"></script>
+<script src="<%- url_for(config.libs.js.dplayer) %>"></script>
 <script>
     $(function () {
         new DPlayer({
             container: document.getElementById('dplayer'),
-            autoplay: '<%- theme.video.autoplay %>' === 'true',
-            theme: '<%- theme.video.theme %>',
-            loop: '<%- theme.video.loop %>' === 'true',
+            autoplay: '<%- config.video.autoplay %>' === 'true',
+            theme: '<%- config.video.theme %>',
+            loop: '<%- config.video.loop %>' === 'true',
             lang: '<%- config.language %>' === 'zh-CN' ? 'zh-cn' : 'en',
-            preload: '<%- theme.video.preload %>',
-            volume: Number('<%- theme.video.volume %>'),
+            preload: '<%- config.video.preload %>',
+            volume: Number('<%- config.video.volume %>'),
             video: {
-                url: '<% if (theme.video.url) { %><%- url_for(theme.video.url) %><% } %>',
-                pic: '<% if (theme.video.pic) { %><%- url_for(theme.video.pic) %><% } %>',
-                thumbnails: '<% if (theme.video.thumbnails) { %><%- url_for(theme.video.thumbnails) %><% } %>'
+                url: '<% if (config.video.url) { %><%- url_for(config.video.url) %><% } %>',
+                pic: '<% if (config.video.pic) { %><%- url_for(config.video.pic) %><% } %>',
+                thumbnails: '<% if (config.video.thumbnails) { %><%- url_for(config.video.thumbnails) %><% } %>'
             }
         });
     });

@@ -16,10 +16,10 @@ if (page.img) {
         return hash;
     };
 
-    var len = theme.featureImages.length;
+    var len = config.featureImages.length;
     var num = Math.abs(hashCode(page.title) % len);
 
-    featureimg = url_for(theme.featureImages[num]);
+    featureimg = url_for(config.featureImages[num]);
 }
 %>
 

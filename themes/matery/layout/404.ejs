@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<% if (theme.banner.enable) { %>
+<% if (config.banner.enable) { %>
     <script>
         // 每天切换 banner 图.  Switch banner image every day.
         var bannerUrl = "<%- url_for('/medias/banner/') %>" + new Date().getDay() + '.jpg';

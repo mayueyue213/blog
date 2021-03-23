@@ -12,7 +12,7 @@
         this.page.identifier = '<%- url_for(page.path) %>';
         this.page.title = '<%= page.title %>';
     };
-    let disqus_shortname = '<%= theme.disqus.shortname %>';
+    let disqus_shortname = '<%= config.disqus.shortname %>';
 
     (function () { // DON'T EDIT BELOW THIS LINE
         let d = document, s = d.createElement('script');

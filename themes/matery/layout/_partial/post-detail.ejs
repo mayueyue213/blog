@@ -73,7 +73,7 @@
 
         <% if (config.prismjs && config.prismjs.enable) { %>
         <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="<%- url_for(theme.libs.css.prism) %>">
+        <link rel="stylesheet" href="<%- url_for(config.libs.css.prism) %>">
         <% } %>
 
         <% if (config.code.break) { %>
@@ -117,7 +117,7 @@
         </div>
     </div>
 
-    <% if (theme.disqus.enable) { %>
+    <% if (config.disqus.enable) { %>
         <%- partial('_partial/disqus') %>
     <% } %>
 

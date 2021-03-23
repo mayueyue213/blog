@@ -6,8 +6,8 @@
     <script src="<%- url_for('/libs/share/js/social-share.min.js') %>"></script>
     <% } %>
 
-    <% if (theme.addthis.enable) { %>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<%- theme.addthis.pubid %>"></script>
+    <% if (config.addthis.enable) { %>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<%- config.addthis.pubid %>"></script>
     <div class="addthis_inline_share_toolbox"></div>
     <% } %>
 
