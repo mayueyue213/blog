@@ -11,6 +11,16 @@ timezone: 'Asia/Shanghai'
 favicon: /favicon.png
 logo: /medias/logo.png
 
+blog:
+  url: /entry
+  text: 网络日志
+  icon: fa fa-angle-double-right
+
+github:
+  text: GITHUB
+  # icon: fab fa-github-alt
+  icon: fa fa-external-link-alt
+  url: https://github.com/mayueyue213
 
 #ICP备案信息尾部显示
 icp:
@@ -28,10 +38,7 @@ time:
   minute: 00 # 分钟
   second: 00 # 秒
 
-github:
-  name: Github
-  icon: fab fa-github-alt
-  url: https://github.com/mayueyue213
+
 
 motto:
   title: '马月月'
@@ -42,11 +49,11 @@ motto:
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 root: /blog/
 url: http://blog.mayueyue.com
-permalink: :year-:month-:day-:title/
+permalink: /:year/:month/:title.html
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+  trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -133,7 +140,10 @@ search:
 # 配置菜单导航的名称、路径和图标icon.
 menu:
   Index:
-    url: /
+    key: Index
+    isIndex: true
+    relativeUrl: entry/index.html
+    url: /entry
     icon: fas fa-home
   Tags:
     url: /tags
@@ -423,3 +433,5 @@ sidebar:
   wechat:
     enable: false
   border: true
+
+firstVisitSign: ALREADY_ENTER_BEFORE

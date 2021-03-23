@@ -1,21 +1,19 @@
-<div class="homepage-cover">
+<div class="index-cover">
     <div class="inner-content">
         <div class="row">
             <img src="<%- url_for(config.favicon) %>" class="logo" alt="LOGO">
-            <!-- <div class="title font-zmx">
-                <%= config.motto.title %> 
-            </div> -->
             <div class="description font-zmx">
                 <%= config.motto.description %>
             </div>
         </div>
 
         <div class="row cover-btns">
-            <a href="#blogEntryAnchor" id="blogEntryLink" class="btn">
-                <i class="fa fa-angle-double-down"></i>网络日志
+            <a href="<%- url_for(config.blog.url) %>" id="blogEntryLink" class="btn">
+                <i class="<%- config.blog.icon %>"></i><%- config.blog.text %>
             </a>
             <a href="<%- url_for(config.github.url) %>" class="btn" target="_blank">
-                <i class="<%- config.github.icon %>"></i>GITHUB
+                <i class="<%- config.github.icon %>"></i><%- config.github.text %>
+                
             </a>
         </div>
         <div class="cover-social-link">

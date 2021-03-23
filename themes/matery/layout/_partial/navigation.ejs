@@ -16,34 +16,13 @@
 <ul class="right nav-menu">
   <% Object.keys(config.menu).forEach(function(key) { %>
   <li class="hide-on-med-and-down nav-item">
-    <% if(!config.menu[key].children) { %>
-    <a href="<%- url_for(config.menu[key].url) %>" class="waves-effect waves-light">
-      <% if (config.menu[key].icon && config.menu[key].icon.length > 0) { %>
-      <i class="<%- config.menu[key].icon %>" style="zoom: 0.6;"></i>
-      <% } %>
-      <span><%- (config.language === 'zh-CN' && menuMap.has(key)) ? menuMap.get(key) : key %></span>
-    </a>
-    <% } else { %>
-    <a href="<%- config.menu[key].url %>" class="waves-effect waves-light">
-
-      <% if (config.menu[key].icon && config.menu[key].icon.length > 0) { %>
-      <i class="<%- config.menu[key].icon %>" style="zoom: 0.6;"></i>
-      <% } %>
-      <span><%- (config.language === 'zh-CN' && menuMap.has(key)) ? menuMap.get(key) : key %></span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      <% for(let childrenLink of config.menu[key].children){ %>
-      <li>
-        <a href="<%- url_for(childrenLink.url)%>">
-          <% if (childrenLink.icon && childrenLink.icon.length > 0) { %>
-          <i class="<%- childrenLink.icon %>" style="margin-top: -20px; zoom: 0.6;"></i>
-          <% } %>
-          <span><%- childrenLink.name %></span>
-        </a>
-      </li>
-      <% } %>
-    </ul>
+    <% if (page.path != config.menu.Index.relativeUrl || key != config.menu.Index.key) { %>
+      <a href="<%- url_for(config.menu[key].url) %>" class="waves-effect waves-light">
+        <% if (config.menu[key].icon && config.menu[key].icon.length > 0) { %>
+        <i class="<%- config.menu[key].icon %>" style="zoom: 0.6;"></i>
+        <% } %>
+        <span><%- (config.language === 'zh-CN' && menuMap.has(key)) ? menuMap.get(key) : key %></span>
+      </a>
     <% } %>
   </li>
   <% }); %>
