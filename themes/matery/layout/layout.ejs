@@ -4,7 +4,9 @@
 
 <body>
     <!-- 不需要头部导航 -->
-    <%- partial('_partial/header') %>
+    <% if (!is_home()) { %>
+        <%- partial('_partial/header') %>
+    <% } %>
 
     <%- body %>
 

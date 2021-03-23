@@ -1,4 +1,14 @@
+<%
+    var hasVisitted = false;
+%>
+<script>
+ if (typeof window !== undefined) {
+    hasVisitted = localStorage.getItem('ALREADY_ENTER_BEFORE');
+}
+</script>
+<% if (is_home() & !hasVisitted) { %>
 <%- partial('_partial/index-cover') %>
+<% } %>
 
 <main id="blogEntryAnchor" class="row main page-home">
     <!-- Post Container -->
