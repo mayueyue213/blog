@@ -322,38 +322,41 @@ libs:
   css:
     matery: /css/matery.css
     mycss: /css/my.css
-    fontAwesome: /libs/awesome/css/all.css # V5.11.1
-    materialize: /libs/materialize/materialize.min.css # 1.0.0
-    aos: /libs/aos/aos.css
-    animate: /libs/animate/animate.min.css # V3.5.1
-    lightgallery: /libs/lightGallery/css/lightgallery.min.css # V1.6.11
-    aplayer: /libs/aplayer/APlayer.min.css
-    dplayer: /libs/dplayer/DPlayer.min.css
-    jqcloud: /libs/jqcloud/jqcloud.css
-    tocbot: /libs/tocbot/tocbot.css
-    prism: /libs/prism/prism.css
+    fontAwesome: /css/all.css # V5.11.1
+    materialize: /css/materialize.min.css # 1.0.0
+    aos: /css/aos.css
+    animate: /css/animate.min.css # V3.5.1
+    lightgallery: /css/lightgallery.min.css # V1.6.11
+    aplayer: /css/APlayer.min.css
+    dplayer: /css/DPlayer.min.css
+    jqcloud: /css/jqcloud.css
+    tocbot: /css/tocbot.css
+    prism: /css/prism.css
   js:
     matery: /js/matery.js
     search: /js/search.js
-    jquery: /libs/jquery/jquery.min.js
-    materialize: /libs/materialize/materialize.min.js # 1.0.0
-    masonry: /libs/masonry/masonry.pkgd.min.js # v4.0.0
-    aos: /libs/aos/aos.js
-    scrollProgress: /libs/scrollprogress/scrollProgress.min.js
-    lightgallery: /libs/lightGallery/js/lightgallery-all.min.js # V1.6.11
-    busuanzi: /libs/others/busuanzi.pure.mini.js
-    aplayer: /libs/aplayer/APlayer.min.js
-    dplayer: /libs/dplayer/DPlayer.min.js
-    crypto: /libs/cryptojs/crypto-js.min.js
-    echarts: /libs/echarts/echarts.min.js
-    jqcloud: /libs/jqcloud/jqcloud-1.0.4.min.js
-    tocbot: /libs/tocbot/tocbot.min.js
-    canvas_nest: /libs/background/canvas-nest.js
-    ribbon: /libs/background/ribbon.min.js
-    ribbonRefresh: /libs/background/ribbon-refresh.min.js
-    ribbon_dynamic: /libs/background/ribbon-dynamic.js
-    instantpage: /libs/instantpage/instantpage.js
-
+    jquery: /js/jquery.min.js
+    materialize: /js/materialize.min.js # 1.0.0
+    masonry: /js/masonry.pkgd.min.js # v4.0.0
+    aos: /js/aos.js
+    scrollProgress: /js/scrollProgress.min.js
+    lightgallery: /js/lightgallery-all.min.js # V1.6.11
+    busuanzi: /js/busuanzi.pure.mini.js
+    aplayer: /js/APlayer.min.js
+    dplayer: /js/DPlayer.min.js
+    crypto: /js/crypto-js.min.js
+    echarts: /js/echarts.min.js
+    jqcloud: /js/jqcloud-1.0.4.min.js
+    tocbot: /js/tocbot.min.js
+    canvas_nest: /js/canvas-nest.js
+    ribbon: /js/ribbon.min.js
+    ribbonRefresh: /js/ribbon-refresh.min.js
+    ribbon_dynamic: /js/ribbon-dynamic.js
+    instantpage: /js/instantpage.js
+    codeBlockFuction: /js/codeBlockFuction.js
+    codeLang: /js/codeLang.js
+    codeCopy: /js/codeCopy.js
+    codeShrink: /js/codeShrink.js
 # 无文章特色图片时需要显示的文章特色图片.
 featureImages:
 - /medias/featureimages/0.jpg

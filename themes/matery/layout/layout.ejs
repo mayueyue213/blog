@@ -3,14 +3,16 @@
 <%- partial('_partial/head') %>
 
 <body>
-    <!-- 不需要头部导航 -->
     <% if (!is_home()) { %>
         <%- partial('_partial/header') %>
     <% } %>
 
     <%- body %>
 
-    <%- partial('_partial/footer') %>
+    <% if (!is_home()) { %>
+        <%- partial('_partial/footer') %>
+    <% } %>
+
 
     <%- partial('_partial/search-modal') %>
     <%- partial('_partial/back-top') %>
@@ -22,18 +24,10 @@
     <script src="<%- url_for(config.libs.js.lightgallery) %>"></script>
     <script src="<%- url_for(config.libs.js.matery) %>"></script>
     <script src="<%- url_for(config.libs.js.search) %>"></script>
-    <!-- 代码块功能依赖 -->
-    <script type="text/javascript" src="<%- url_for('/libs/codeBlock/codeBlockFuction.js') %>"></script>
-
-    <!-- 代码语言 -->
-    <script type="text/javascript" src="<%- url_for('/libs/codeBlock/codeLang.js') %>"></script>
-
-    <!-- 代码块复制 -->
-    <script type="text/javascript" src="<%- url_for('/libs/codeBlock/codeCopy.js') %>"></script>
-
-    <!-- 代码块收缩 -->
-    <script type="text/javascript" src="<%- url_for('/libs/codeBlock/codeShrink.js') %>"></script>
-
+    <script type="text/javascript" src="<%- url_for(config.libs.js.codeBlockFuction) %>"></script>
+    <script type="text/javascript" src="<%- url_for(config.libs.js.codeLang) %>"></script>
+    <script type="text/javascript" src="<%- url_for(config.libs.js.codeCopy) %>"></script>
+    <script type="text/javascript" src="<%- url_for(config.libs.js.codeShrink) %>"></script>
     <%- partial('_partial/baidu-analytics') %>
     <%- partial('_partial/baidu-push') %>
     <% if (config.busuanziStatistics && config.busuanziStatistics.enable) { %>
@@ -91,7 +85,7 @@
     </script>
     <% } %>
 
-	<% if (config.tuxiaochao.enable) { %>
+	<% if (!is_home() && config.tuxiaochao.enable) { %>
 	    <div style="position:fixed;bottom:125px;right:9px;cursor: pointer;">
 	        <a title="兔小巢" href="https://support.qq.com/products/<%- config.tuxiaochao.productId %>"><img src="<%- config.tuxiaochao.icon %>"></a>
 	    </div>
@@ -118,5 +112,4 @@
     <% } %>
 
 </body>
-
 </html>

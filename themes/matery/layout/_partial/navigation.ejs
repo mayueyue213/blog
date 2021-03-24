@@ -17,7 +17,7 @@
   <% Object.keys(config.menu).forEach(function(key) { %>
   <li class="hide-on-med-and-down nav-item">
     <% if (page.path != config.menu.Index.relativeUrl || key != config.menu.Index.key) { %>
-      <a href="<%- url_for(config.menu[key].url) %>" class="waves-effect waves-light">
+      <a href="<%- url_for(config.menu[key].url) %>" class="waves-effect waves-light keep-origin">
         <% if (config.menu[key].icon && config.menu[key].icon.length > 0) { %>
         <i class="<%- config.menu[key].icon %>" style="zoom: 0.6;"></i>
         <% } %>

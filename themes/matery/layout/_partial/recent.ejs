@@ -7,14 +7,14 @@ var topPostsCount = topPosts.length;
 %>
 
 <% if (topPostsCount > 0) { %>
-    <div class="recent-post-card">
-        <%
-            var post = topPosts[0];
-        %>
-        <!-- 第一个展示预览 -->
-        <%- partial('_partial/post-overview.ejs', { page: post }) %>
+    <%
+        var post = topPosts[0];
+    %>
+    <!-- 第一个展示预览 -->
+    <%- partial('_partial/post-overview.ejs', { page: post }) %>
 
-        <!-- 展示最近几个链接 -->
+    <!-- 展示最近几个链接 -->
+    <div class="recent-post-list">
         <% for (var i = 1; i < topPostsCount; i++) { %>
             <%
                 post = topPosts[i];

@@ -1,14 +1,9 @@
-<header class="navbar-fixed">
-    <nav id="headNav" class="bg-color">
-        <div id="navContainer" class="nav-wrapper container">
+<header class="navbar-fixed container-full">
+    <nav class="bg-color">
+        <div class="container">
             <div class="brand-logo">
-                <a href="<%- url_for() %>" class="waves-effect waves-light">
-                    <% if (config.logo !== undefined && config.logo.length > 0) { %>
+                <a href="<%- url_for() %>">
                     <img src="<%- url_for(config.logo) %>" class="logo-img" alt="LOGO">
-                    <% } %>
-                    <% if (config.navTitle !== undefined) { %>
-                        <span class="logo-span"><%= config.navTitle %></span>
-                    <% } %>                    
                 </a>
             </div>
             <%- partial('_partial/navigation') %>
