@@ -1,4 +1,4 @@
-<main class="content">
+<main class="container mt-default">
 
     <% if (config.postCalendar) { %>
     <%- partial('_widget/post-calendar') %>
@@ -10,7 +10,7 @@
     var month = '1970-01';
     %>
 
-    <div class="container">
+    <div class="container mt-default">
         <div id="cd-timeline">
             <span></span>
             <% page.posts.each(function(post) { %>
@@ -84,7 +84,6 @@
             <% }); %>
         </div>
     </div>
-
 </main>
 
 <% if (page.total > 1) { %>
