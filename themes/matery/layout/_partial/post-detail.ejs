@@ -1,62 +1,58 @@
 <!-- 文章内容详情 -->
 <div id="artDetail">
-    <div class="card">
-        <div class="post-info">
-            <div class="post-date info-break-policy">
-                <%- page.title %>
-            </div>
-            <% if (config.postInfo.date) { %>
-            <div class="post-date info-break-policy float-right">
-                <i class="far fa-calendar-minus fa-fw"></i><%- __('publishDate') %>:&nbsp;&nbsp;
-                <%- date(page.date, 'YYYY-MM-DD') %>
-            </div>
-            <% } %>
+    <div class="post-info">
+        <h2 class="article-title">
+            <%- page.title %>
+        </h2>
+        <div class="date">
+            <i class="far fa-calendar-minus fa-fw"></i><%- __('publishDate') %>:&nbsp;&nbsp;
+            <%- date(page.date, 'YYYY-MM-DD') %>
         </div>
-        <hr class="clearfix">
+    </div>
+    <hr class="clearfix">
 
-        <% if (config.prismjs && config.prismjs.enable) { %>
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="<%- url_for(config.libs.css.prism) %>">
-        <% } %>
+    <% if (config.prismjs && config.prismjs.enable) { %>
+    <!-- 是否加载使用自带的 prismjs. -->
+    <link rel="stylesheet" href="<%- url_for(config.libs.css.prism) %>">
+    <% } %>
 
-        <% if (config.code.break) { %>
-        <!-- 代码块折行 -->
-        <style type="text/css">
-            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
-        </style>
-        <% } %>
+    <% if (config.code.break) { %>
+    <!-- 代码块折行 -->
+    <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+    </style>
+    <% } %>
 
-        <div class="no-padding">
-            <div id="articleContent">
-                <%- page.content %>
+    <div class="no-padding">
+        <div id="articleContent">
+            <%- page.content %>
+        </div>
+        <hr class="mt-2"/>
+
+        <%- partial('_partial/reprint-statement') %>
+
+        <div class="article-profile">
+            <div>
+                <i class="fa fa-folder-open"></i>
+                <% page.categories.forEach(function(category, index) { %>
+                    <a href="<%- url_for(category.path) %>">
+                        <%= category.name %>
+                    </a>
+                    <% if (index !== page.categories.length - 1) { %>
+                        ,
+                    <% } %>
+                <% }); %>
             </div>
-            <hr class="mt-2"/>
-
-            <%- partial('_partial/reprint-statement') %>
-
-            <div class="share-wrapper">
-                <div class="float right" style="display: inline-block;">
-                    <i class="fa fa-tags"></i>
-                    <% page.tags.forEach(function(tag, index) { %>
-                        <a href="<%- url_for(tag.path) %>">
-                            <%= tag.name %>
-                        </a>
-                        <% if (index !== page.tags.length - 1) { %>
-                            ,
-                        <% } %>
-                    <% }); %>
-                </div>
-                <div class="float-left" style="display: inline-block;">
-                    <i class="fa fa-folder-open"></i>
-                    <% page.categories.forEach(function(category, index) { %>
-                        <a href="<%- url_for(category.path) %>">
-                            <%= category.name %>
-                        </a>
-                        <% if (index !== page.categories.length - 1) { %>
-                            ,
-                        <% } %>
-                    <% }); %>
-                </div>
+            <div
+                <i class="fa fa-tags"></i>
+                <% page.tags.forEach(function(tag, index) { %>
+                    <a href="<%- url_for(tag.path) %>">
+                        <%= tag.name %>
+                    </a>
+                    <% if (index !== page.tags.length - 1) { %>
+                        ,
+                    <% } %>
+                <% }); %>
             </div>
         </div>
     </div>
