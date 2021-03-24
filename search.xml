@@ -166,9 +166,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/blog/categories/index.html"/>
-      <url>/blog/categories/index.html</url>
+      <title>about</title>
+      <link href="/blog/about/index.html"/>
+      <url>/blog/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -177,9 +177,9 @@
     
     
     <entry>
-      <title>about</title>
-      <link href="/blog/about/index.html"/>
-      <url>/blog/about/index.html</url>
+      <title>categories</title>
+      <link href="/blog/categories/index.html"/>
+      <url>/blog/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
