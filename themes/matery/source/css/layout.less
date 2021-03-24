@@ -6,6 +6,7 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .body {
   margin-top: 50px;
   max-width: 1200px;
@@ -16,11 +17,11 @@
 .main {
   min-height: 100vh;
   margin-bottom: 100px;
-  float: left;
+  &.with-sidebar {
+    margin-left: initial !important;
+  }
 }
-.main.with-sidebar {
-  margin-left: initial !important;
-}
+
 footer {
   height: 64px;
   display: flex;
@@ -87,4 +88,53 @@ footer {
 }
 .toc-widget {
   width: 262.5px;
+}
+
+.bg-white {
+  background: white;
+}
+.white {
+  color: white;
+}
+
+.no-border {
+  border: none !important;
+}
+.no-shadow {
+  box-shadow: none !important;
+}
+
+.no-radius {
+  border-radius: initial;
+}
+
+.card {
+  margin: 0;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.transparent {
+  background: transparent;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+.mt-default {
+  margin-top: 50px;
 }

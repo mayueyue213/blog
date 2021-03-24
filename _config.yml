@@ -150,7 +150,7 @@ menu:
     icon: fas fa-tags
   Categories:
     url: /categories
-    icon: fas fa-bookmark
+    icon: fas fa-folder-open
   Archives:
     url: /archives
     icon: fas fa-archive
@@ -166,7 +166,7 @@ recommend:
 reward:
   enable: true
   title: 这次一定
-  wechat: /medias/reward/wechat.jpeg
+  wechat: /medias/reward/wechat-yueyue.jpeg
   alipay: /medias/reward/alipay.jpeg
 
 # 文章字数统计、阅读时长、总字数统计等
