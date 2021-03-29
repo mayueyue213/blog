@@ -186,12 +186,12 @@
     <div class="article-info">
         <div class="post-info">
             <div class="post-date info-break-policy">
-                demo
+                wogit
             </div>
             
             <div class="post-date info-break-policy float-right">
                 <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                2021-03-24
+                2021-03-29
             </div>
             
         </div>
@@ -199,46 +199,54 @@
     <hr class="clearfix">
 
     <div class="article-content">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+        <p><code>wogit</code> 是一个 git clone 加速命令行工具，使用加速镜像解决从 <code>github</code> 克隆速度慢的问题，在很多情况下能够显著提升 clone 速度。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i wogit -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// 声明Vue类</span>
-<span class="token keyword">function</span> <span class="token function">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
-<span class="token punctuation">&#125;</span>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><code>wogit</code> 的使用，除了支持几个指定特定源的选项之外，其他的与 <code>git</code> 一致，基本是把<code>git</code>替换成<code>wogit</code>即可</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># from</span>
+<span class="token function">git</span> clone https://github.com/chalk/chalk.git
 
-<span class="token comment">// prototype方法定义，相当于声明了父类, SuperClass</span>
-<span class="token function">initMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
-<span class="token function">stateMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
-<span class="token function">eventsMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
-<span class="token function">lifecycleMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
-<span class="token function">renderMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
+<span class="token comment"># ti</span>
+wogit clone https://github.com/chalk/chalk.git
 
-<span class="token comment">// 全局API定义，相当于自身属性、方法定义 ChildClass</span>
-<span class="token function">initGlobalAPI</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
+<span class="token comment"># 其他参数不变，跟使用git一样，如</span>
+wogit clone https://github.com/chalk/chalk.git --depth<span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment">// ssr相关配置</span>
-Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span><span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token string">'$isServer'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> <span class="token comment">/* 省略 */</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span><span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token string">'$ssrContext'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> <span class="token comment">/* 省略 */</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>Vue<span class="token punctuation">,</span> <span class="token string">'FunctionalRenderContext'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span> <span class="token comment">/* 省略 */</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="镜像切换"><a href="#镜像切换" class="headerlink" title="镜像切换"></a>镜像切换</h2><p><code>wogit</code> 默认使用 <code>cnpmjs</code> 镜像，使用 <code>wogit -h</code> 可以随时查看镜像切换的选项</p>
+<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">➜ wogit -h
+Usage: wogit [options]
 
-<span class="token comment">// version</span>
-Vue<span class="token punctuation">.</span>version <span class="token operator">=</span> <span class="token string">'2.6.11'</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Options:
+  -V, --version   output the version number
+  -cn --cnpm      cnpmjs镜像(默认)
+  -fa --fastgit   fastgit镜像
+  -ge --gitee     gitee镜像
+  -gc --gitclone  gitclone镜像
+  -gh --github    使用原始github镜像
+  -h, --help      display help for command<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>比如</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># fastgit镜像</span>
+wogit clone https://github.com/chalk/chalk.git -fa
+wogit clone https://github.com/chalk/chalk.git --fastgit
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token comment"># gitee镜像</span>
+wogit clone https://github.com/chalk/chalk.git -ge
+wogit clone https://github.com/chalk/chalk.git -gitee
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token comment"># 其他不一而足</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>说明：并非所有的仓库都有加速，请根据提示，确认是否需要使用<code>-gh</code>强制直接使用 <code>github</code> 。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p><code>wogit</code> 只会在 <strong>操作为clone且远程为github仓库</strong> 时才会使用加速的源，其他情况它是透传给<code>git</code>的，因此 clone 外的其他操作也是 OK 的。</p>
+<p>可以是可以啦</p>
+<p>但是</p>
+<p>原汁原味的 <code>git</code> 它不香吗</p>
+<p>只在 clone github 时用 wogit 就好啦</p>
 
     </div>
     <div class="read-more">
   <p class="ellipsis">...</p>
   <div class="center">
-    <a class="link" href="/blog/2021/03/demo">阅读全文</a>
+    <a class="link" href="/blog/2021/03/wogit">阅读全文</a>
   </div>
 </div>
 </div>
@@ -246,51 +254,6 @@ Vue<span class="token punctuation">.</span>version <span class="token operator">
 
     <!-- 展示最近几个链接 -->
     <div class="recent-post-list">
-        
-            
-            <li class="item">
-                <span class="date">
-                    2021年3月24日
-                </span>
-                <i class="fa fa-angle-double-right"></i>
-                <a class="link" href="/blog/2021/03/excellent">excellent</a>                    
-            </li>
-        
-            
-            <li class="item">
-                <span class="date">
-                    2021年3月23日
-                </span>
-                <i class="fa fa-angle-double-right"></i>
-                <a class="link" href="/blog/2021/03/hello-world">Hello World</a>                    
-            </li>
-        
-            
-            <li class="item">
-                <span class="date">
-                    2021年3月23日
-                </span>
-                <i class="fa fa-angle-double-right"></i>
-                <a class="link" href="/blog/2021/03/test">test</a>                    
-            </li>
-        
-            
-            <li class="item">
-                <span class="date">
-                    2021年3月23日
-                </span>
-                <i class="fa fa-angle-double-right"></i>
-                <a class="link" href="/blog/2021/03/thiss-is">Hello World</a>                    
-            </li>
-        
-            
-            <li class="item">
-                <span class="date">
-                    2021年3月23日
-                </span>
-                <i class="fa fa-angle-double-right"></i>
-                <a class="link" href="/blog/2021/03/web">Hello World</a>                    
-            </li>
         
 
         <!-- 更多文章 -->
@@ -333,14 +296,8 @@ Vue<span class="token punctuation">.</span>version <span class="token operator">
   <ul class="widget-body">
     
       <li class="widget-list-item">
-          <a href="categories/#JavaScript">
-            JavaScript (1)
-          </a>
-      </li>
-    
-      <li class="widget-list-item">
-          <a href="categories/#test">
-            test (4)
+          <a href="categories/#工具">
+            工具 (1)
           </a>
       </li>
     
@@ -352,7 +309,7 @@ Vue<span class="token punctuation">.</span>version <span class="token operator">
       <span>文章标签</span>
     </h6>
     <div class="widget-body tag-widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/atesat/" rel="tag">atesat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%98%BF%E6%89%93%E7%AE%97%E6%94%BE/" rel="tag">阿打算放</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test-as/" rel="tag">test-as</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li></ul>
     </div>
   </div>
 
@@ -363,7 +320,7 @@ Vue<span class="token punctuation">.</span>version <span class="token operator">
       <span>文章归档</span>
     </h6>
     <div class="widget-body">
-      <ul class="list-unstyled archive-widget widget-list"><li class="list-unstyled archive-widget widget-list-item"><a class="list-unstyled archive-widget widget-list-link" href="/blog/archives/2021/03/">2021年3月</a><span class="list-unstyled archive-widget widget-list-count">6</span></li></ul>
+      <ul class="list-unstyled archive-widget widget-list"><li class="list-unstyled archive-widget widget-list-item"><a class="list-unstyled archive-widget widget-list-link" href="/blog/archives/2021/03/">2021年3月</a><span class="list-unstyled archive-widget widget-list-count">1</span></li></ul>
     </div>
   </div>
 
