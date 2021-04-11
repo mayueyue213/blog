@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Self use search engine</title>
+</head>
+<body>
+<gcse:search></gcse:search>  
+<script>
+(function() {
+  var cx = '001505873415537972342:zzihni2bcic';
+  var gcse = document.createElement('script');
+  gcse.type = 'text/javascript';
+  gcse.async = true;
+  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(gcse, s);
+})();
+(function() {
+  document.onreadystatechange = function() {
+    if (document.readyState === 'complete') {
+      document.querySelector('.gsc-adBlock').remove();
+    }
+  }
+})();
+</script> 
+</body>
+</html>

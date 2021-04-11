@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>执行上下文</title>
+      <link href="/blog//2021/04/execution-context.html"/>
+      <url>/blog//2021/04/execution-context.html</url>
+      
+        <content type="html"><![CDATA[<p>执行上下文(Execution Contexts，简称EC)是程序执行时的运行环境，说明执行到当前的这个位置的时候，周围是个啥情况，有些啥东西。</p><p>根据 <a href="https://262.ecma-international.org/5.1/#sec-10.3">ECMA规范中的定义</a>，上下文由以下三个部分组成</p><img src="/blog/2021/04/execution-context/ctx.jpg" class="" title="Execution Contexts"><p>不管是 VariableEnvironment 还是 LexicalEnvironment，他们后面都可以跟上一个 Object，即把他们当做一个对象去看待。执行上下文的理解相当不容易，下面分节尝试进行说明当下的理解。</p><h2 id="变量环境"><a href="#变量环境" class="headerlink" title="变量环境"></a>变量环境</h2><p>VariableEnvironment 称为变量环境，简称  VE ，其 Purpose 描述如下</p><blockquote><p> Identifies the Lexical Environment whose environment record holds bindings created by VariableStatements and FunctionDeclarations within this execution context.</p></blockquote><p>请注意这里的 VariableStatements 和 FunctionDeclarations，对于这个描述，我理解为 VE 是特殊的 LE，它只包含 函数 和 var 声明，不包含通过 let, const 声明的内容。</p><p>首先我们来看一个例子，使用 var, let, const 声明了一些变量</p><img src="/blog/2021/04/execution-context/ve-0.jpg" class="" title="Variable Environment example"><p>在右侧的<code>Scope</code>中，<code>Local</code>对应当前上下文，现在还看不出有什么特别的内容。</p><p>接下来将一部分声明挪到一个<code>&#123;&#125;</code>块里面，如下</p><img src="/blog/2021/04/execution-context/ve-1.jpg" class="" title="Variable Environment example"><p>右侧显示多了一个<code>Block</code>，特别注意的是在<code>&#123;&#125;</code>块中通过<code>var</code>声明的变量 d，被提升到了 <code>Local</code> 里面。也就是说，通过 var 声明的变量，会被提升到 Local，而通过 let 和 const 声明的，将会被放到其词法作用域中。</p><p>既然 <strong>通过 let 和 const 声明的标识符，将会被放到其词法作用域中</strong>，而 foo 函数自身也构成了一个词法作用域，对于 a 和 b，我们是不是也可以拆分成两个部分呢？如下</p><pre class="line-numbers language-js" data-language="js"><code class="language-js">Block<span class="token operator">:</span> <span class="token punctuation">&#123;</span>  c<span class="token operator">:</span>  f<span class="token operator">:</span><span class="token punctuation">&#125;</span><span class="token comment">// 设想有这个 Block 的存在</span>Block0<span class="token operator">:</span> <span class="token punctuation">&#123;</span>  b<span class="token operator">:</span><span class="token punctuation">&#125;</span>VarAndFunc<span class="token operator">:</span> <span class="token punctuation">&#123;</span>  a<span class="token operator">:</span>  d<span class="token operator">:</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这个时候，就相当于把上下文中声明的所有标识符，拆分成了 <code>Block0</code> 和 <code>VarAndFunc</code>两个部分，这个<code>VarAndFunc</code>部分就是 VE。总之，可以理解为上下文中所有 函数声明 和 var声明 的标识符，保存在一个叫做 VE 的对象上。</p><h2 id="词法环境"><a href="#词法环境" class="headerlink" title="词法环境"></a>词法环境</h2><p>LexicalEnvironment 称为词法环境，简称 (LE)，其 Purpose 描述如下</p><blockquote><p>Identifies the Lexical Environment used to resolve identifier references made by code within this execution context.</p></blockquote><p>根据描述，LE 是用来解析 EC 下代码的标识符引用的，这个描述，和 “Lexical Environment” 字面意义差别很大，由此带来了很多理解上的困难。</p><p><strong>Lexical Environment</strong>，当我从字面上去理解的时候，理解为 <strong>词法作用域下声明的所有标识符的引用对象</strong>。</p><p>为了便于理解，对于词法作用域，暂时不去从动/静态的角度去理解，在此处理解为 —— 任意一个形成一个作用域的局部块，都可以称为一个词法作用域。根据这个理解，词法作用域，我们也可称为局部作用域，那么函数作用域，块级作用域，都是一个词法作用域，即</p><ul><li><code>&#123;&#125;</code>局部作用域，应该对应一个 LE</li><li>函数局部作用域，应该对应一个 LE</li></ul><p>也就是说对于标识符的引用，应该是下面这个样子</p><img src="/blog/2021/04/execution-context/ctx-11.jpg" class="" title="Execution Contexts"><p>整个执行上下文中，有一个LE，<code>&#123;&#125;</code>局部作用域中，又形成一个子的 LE。如果按照这个理解，就没有什么 VE 的事情了，这一切，因为变量提升的存在，变得复杂了。</p><p>在<code>&#123;&#125;</code>对应的<code>Block</code>里面，由于变量提升，这个<code>Block</code>只包含<code>let</code>和<code>const</code>声明的标识符，LE 定义所要求的“所有”就不成立了，所以对于 LE，应该重新对定义做一下修正：</p><p><strong>词法环境包含局部作用域下 let 和 const 声明的标识符的引用</strong></p><p>也就是说，局部作用域中声明的标识符，分成了两个部分</p><ul><li>LE：保存 let 和 const 声明的标识符；</li><li>VE：保存 var 和 函数声明对应的标识符；</li></ul><p>需要注意的是</p><ul><li>VE 是“上下文级别”的，不是任何局部作用域都有的，非函数的<code>&#123;&#125;</code>执行不会创建新的上下文，内部也就没有 VE，在整个上下文中只有一个 VE；</li></ul><p>根据上面这个拆分，最终对标识符的引用对象是下面这个样子</p><img src="/blog/2021/04/execution-context/ctx-2.jpg" class="" title="Execution Contexts"><p>整体上仍旧使用了原来的“变量对象”来描述对所有标识符的引用，而内部却拆分成了 变量环境对象 和 词法环境对象 两个部分。</p><h2 id="标识符查找"><a href="#标识符查找" class="headerlink" title="标识符查找"></a>标识符查找</h2><p>在引入了块级作用域之后，在函数执行上下文中，有一个词法环境栈，栈底是函数的一个特殊的词法环境对象，当执行到某个块级词法作用域的时候，将块级作用域的词法环境对象推入到栈中。对变量进行查的时候，就从栈顶向下查找，最后再查找 变量环境对象。对于下面这个例子</p><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  <span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>  <span class="token punctuation">&#123;</span>    <span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>    <span class="token keyword">var</span> c <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>    <span class="token punctuation">&#123;</span>      <span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>      <span class="token keyword">var</span> d <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>      <span class="token keyword">const</span> e <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>  <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>标识符 a 的查找过程如下</p><img src="/blog/2021/04/execution-context/ctx-3.jpg" class="" title="Execution Contexts"><h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><p>《JavaScript高级教程》里面对“变量对象”(Variable Object，简称VO)是这样描述的：</p><blockquote><p>每个上下文都有一个关联的变量对象（variable object），而这个上下文中定义的所有变量和函数都存在于这个对象上</p></blockquote><p>在没有<code>let</code>和<code>const</code>的年代，上面的描述可以等价于</p><blockquote><p>每个上下文都有一个关联的变量对象（variable object），而这个上下文中 var 定义的所有变量，函数声明都存在于这个对象上</p></blockquote><p>当加入了 let 和 const，加入了块级作用域之后，这两个描述不等价了。第二个描述所对应的一个对象，现在叫做“变量环境”。</p><p><txt orange bold>现在这种局面，对于理解上造成了障碍：按照第二个描述，原来的 变量对象 变成了现在的 变量环境，而按照第一个描述，现在的 变量环境 却不是原来的 变量对象。</txt></p><p>我选择了仍旧使用 <strong>变量对象</strong> 这个名称来称呼 “保存上下文中定义的所有变量和函数的对象”。</p><p><txt orange>需要注意的是，变量对象是相对于上下文而言的，但并非所有的局部作用域在执行时都会创建新的上下文</txt></p><p>于是我们仍旧需要一个新的名词，用以统一称呼 “<strong>作用域</strong>定义中的变量和函数”，我称之为 作用域环境 (Scope Environment, 简称 SE)。从作用域的角度，这样一个变量：</p><ul><li>对于函数作用域，SE == VO</li><li>对于块作用域，SE == LE</li></ul><h2 id="调用栈"><a href="#调用栈" class="headerlink" title="调用栈"></a>调用栈</h2><p>调用栈就是执行上下文栈，是用来管理执行上下文的。由于函数执行上下文是日常开发中的主要关注的执行上下文，可以认为调用栈是用来维护函数调用关系的。在开发中可以通过浏览器开发者工具的<code>Call Stack</code>面板进行查看，对于开发调试，源码学习理解有重要的作用。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>执行上下文声明的所有标识符都维护在一个叫做 “变量对象” 的对象上。在加入<code>let</code>和<code>const</code>之后，通过引入 词法环境 和词法环境栈，实现了块级作用域。</p><p>在执行上下文中，对于 “保存定义的变量和函数的对象”，有四个名词：</p><table><thead><tr><th>名词</th><th>缩写</th><th>含义</th></tr></thead><tbody><tr><td>变量对象</td><td>VO</td><td>保存<strong>上下文</strong>中定义的<strong>所有标识符</strong>的对象</td></tr><tr><td>变量环境</td><td>VE</td><td>保存<strong>上下文</strong>中定义的<strong>所有 var 声明 变量和函数标识符</strong>的对象</td></tr><tr><td>词法环境</td><td>LE</td><td>保存<strong>作用域</strong>中定义的<strong>所有 let, const 声明 变量和函数标识符</strong>的对象</td></tr><tr><td>作用域环境</td><td>SE</td><td>保存最终归属于所在作用域的标识符的对象，对于函数作用域 SE == VO，对于块作用域 SE == LE</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>wogit</title>
       <link href="/blog//2021/03/wogit.html"/>
       <url>/blog//2021/03/wogit.html</url>
@@ -45,6 +72,17 @@
     
     
     <entry>
+      <title>contact</title>
+      <link href="/blog/contact/index.html"/>
+      <url>/blog/contact/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>categories</title>
       <link href="/blog/categories/index.html"/>
       <url>/blog/categories/index.html</url>
@@ -67,28 +105,6 @@
     
     
     <entry>
-      <title>contact</title>
-      <link href="/blog/contact/index.html"/>
-      <url>/blog/contact/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>blog</title>
-      <link href="/blog/entry/index.html"/>
-      <url>/blog/entry/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>friends</title>
       <link href="/blog/friends/index.html"/>
       <url>/blog/friends/index.html</url>
@@ -103,6 +119,17 @@
       <title>tags</title>
       <link href="/blog/tags/index.html"/>
       <url>/blog/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>blog</title>
+      <link href="/blog/entry/index.html"/>
+      <url>/blog/entry/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
